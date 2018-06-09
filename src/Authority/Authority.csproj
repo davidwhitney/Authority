@@ -5,9 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ModelBinding\" />
     <Folder Include="CommandHandling\" />
-    <Folder Include="ControlFlow\" />
+    <Folder Include="ModelBinding\" />
     <Folder Include="Routing\Conventional\" />
     <Folder Include="Routing\Attribute\" />
     <Folder Include="Routing\Declarative\" />

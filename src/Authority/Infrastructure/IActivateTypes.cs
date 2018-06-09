@@ -1,7 +1,9 @@
-﻿namespace Authority.Infrastructure
+﻿using System;
+
+namespace Authority.Infrastructure
 {
     public interface IActivateTypes
     {
-        object CreateType<T>();
+        object CreateType(Type t);
     }
 }

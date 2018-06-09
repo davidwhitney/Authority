@@ -1,4 +1,7 @@
-﻿namespace Authority
+﻿using System.Collections.Generic;
+using Authority.ControlFlow;
+
+namespace Authority
 {
     public class CommandLineApplication
     {
@@ -9,9 +12,19 @@
             _configuration = configuration;
         }
 
-        public void Run()
+        public void Run(string[] args)
         {
+            var callContext = new CallContext(args);
 
+            var routingResult = _configuration.RoutingStrategy.Route(args);
+
+            var action = _configuration.TypeActivationStrategy.CreateType(routingResult.TargetType);
+            var arguments = new List<object>();
+            var result = routingResult.TargetMethod.Invoke(action, arguments.ToArray()) as ActionResultBase;
+
+            result.Invoke();
+
+            
         }
     }
 }
